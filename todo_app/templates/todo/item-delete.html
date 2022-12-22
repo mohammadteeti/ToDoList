@@ -1,0 +1,15 @@
+{%extends "base.html"%}
+
+<!--Not Needed Any More-->
+
+{%block content%}
+
+    <h1>Are You Sure You want To Delete Item ? </h1><h3>{{item.title}}</h3>
+    <form method="post">
+        {% csrf_token %}
+
+        <div><input type="submit" value="Yes" name="delete"  style="width:100%;background-color:red"></div>
+        <div><input type="submit" value="No"  name="delete"  style="width:100%;background-color:green"></div>
+
+    </form>
+{%endblock%}

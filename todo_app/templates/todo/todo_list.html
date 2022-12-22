@@ -1,0 +1,51 @@
+{%extends "base.html"%}
+
+{%block content%}
+<div>
+
+    <div>
+
+        <div>
+
+            <h3>Edit List:</h3>
+            {%comment%}
+            here we used the add context
+            (todo_list) that we added when overiding
+            get_context_data in ItemListView
+            {%endcomment%}
+            <h5>{{todo_list.title | upper}}</h5>
+        </div>
+        <ul>
+
+            {%for item in object_list%}
+            <li>
+                <div>
+                    <div role="button" onclick="location.href='{%url "item-update" todo_list.id item.id%}'">
+                        {{item.title}}
+                            (Due {{item.due_date | date:"l, F j"}})
+                        
+                        <div style="float:right;">
+                        <a role="button" style="background-color:red;color:white;font-weight:bold;" href='{%url "item-delete" todo_list.id item.id %}'">Delete</a>
+                    </div>
+                    </div>
+                </div>
+            </li>
+            
+
+            {%empty%}
+
+            <p>There Are No Items Yet 😀
+            </p>
+
+            {%endfor%}
+        </ul>
+        <p>
+            <input value="Add New Item" type="button" onclick="location.href='{%url "item-add" todo_list.id %}' ">
+            <input value="Cancel" type="button"
+                onclick="location.href='{%url "index"  %}'">
+
+</p>
+</div>
+</div>
+
+{%endblock%}

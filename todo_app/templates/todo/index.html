@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+
+
+{%block content%}
+<h1>To Do List!</h1>
+{%for list in object_list%}
+
+<div role="button"
+onclick="location.href='{%url "list" list.id%}' "
+>
+    {{list.title}}
+</div>
+
+{%empty%}
+<h5>You have No Lists Yet 😀 </h5>
+
+{%endfor%}
+
+<p>
+    <input 
+    value="Create List"
+    type="button"
+    onclick="location.href='{%url "list-add" %}' ">
+
+</p>
+
+{%endblock%}
